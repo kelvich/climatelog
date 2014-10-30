@@ -13,7 +13,7 @@ class StatsController < ApplicationController
       average(:temperature)
 
     @values = @hours.
-      map{ |h| @temps[ (h-3)%24 ].to_f }
+      map{ |h| @hours[ (h-3)%24 ].to_f }
 
   end
 
