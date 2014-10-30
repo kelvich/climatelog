@@ -1,7 +1,7 @@
 <script type="text/javascript">
 $(function(){
   var data = {
-    labels: [<%= @labels.join(", ") %>],
+    labels: [<%= @hours.join(", ") %>],
     datasets: [
         {
             label: "My First dataset",
@@ -11,7 +11,7 @@ $(function(){
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [<%= @temps.join(", ") %>]
+            data: [<%= @values.join(", ") %>]
         }
     ]
   };
