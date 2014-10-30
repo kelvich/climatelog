@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'stats/index'
+
+  post 'post/:mac' => 'sensor#receive'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
