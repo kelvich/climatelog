@@ -1,7 +1,7 @@
 <script type="text/javascript">
 $(function(){
-  var data = {
-    labels: [<%= @hours.join(", ") %>],
+  var temperature = {
+    labels: [<%= @temperature.keys.join(", ") %>],
     datasets: [
         {
             label: "My First dataset",
@@ -11,12 +11,47 @@ $(function(){
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [<%= @values.join(", ") %>]
+            data: [<%= @temperature.values.join(", ") %>]
         }
     ]
   };
 
-  tempChart = new Chart($("#temp").get(0).getContext("2d")).Line(data)
+  var humidity = {
+    labels: [<%= @humidity.keys.join(", ") %>],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: [<%= @humidity.values.join(", ") %>]
+        }
+    ]
+  };
+
+  var pressure = {
+    labels: [<%= @pressure.keys.join(", ") %>],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: [<%= @pressure.values.join(", ") %>]
+        }
+    ]
+  };
+
+  tempChart = new Chart($("#temp").get(0).getContext("2d")).Line(temperature)
+  humChart = new Chart($("#humidity").get(0).getContext("2d")).Line(humidity)
+  pressChart = new Chart($("#pressure").get(0).getContext("2d")).Line(pressure)
+
 
 })
 
@@ -36,10 +71,12 @@ $(function(){
 
     <div class="row">
       <h3 class="page-header">Влажность</h3>
+      <canvas id="humidity" width="800" height="300"></canvas>
     </div>
 
     <div class="row">
       <h3 class="page-header">Давление</h3>
+      <canvas id="pressure" width="800" height="300"></canvas>
     </div>
 
   </div>

@@ -1,20 +1,13 @@
 class StatsController < ApplicationController
 
   def index
-    current_hour = DateTime.now.hour
-    @hours = current_hour.
-      downto(current_hour-23).
-      map{|h| h%24 }.
-      reverse
+    @temperature = Measurement.last_day(:temperature)
+    @humidity = Measurement.last_day(:humidity)
+    
 
-    temps = Measurement.
-      group('EXTRACT(HOUR FROM created_at)::int').
-      order('EXTRACT(HOUR FROM created_at)::int').
-      average(:temperature)
-
-    @values = @hours.
-      map{ |h| temps[ (h-3)%24 ].to_f }
-
+    # convert to millimeters of mercury
+    pressure = Measurement.last_day(:pressure)
+    @pressure = Hash[pressure.map{ |h,p| [h, p/133.3] }]
   end
 
 end
