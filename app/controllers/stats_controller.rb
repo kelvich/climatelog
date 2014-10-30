@@ -12,7 +12,7 @@ class StatsController < ApplicationController
       order('EXTRACT(HOUR FROM created_at)::int').
       average(:temperature)
 
-    @values = @labels.
+    @values = @hours.
       map{ |h| @temps[ (h-3)%24 ].to_f }
 
   end
