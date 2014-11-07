@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030111957) do
+ActiveRecord::Schema.define(version: 20141107153757) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "measurements", force: true do |t|
     t.float    "temperature"
@@ -19,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141030111957) do
     t.float    "humidity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mac"
   end
 
 end

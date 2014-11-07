@@ -8,7 +8,7 @@ class SensorController < ApplicationController
   private
 
     def measurement_params
-      params.permit(:temperature,:pressure,:humidity)
+      params.permit(:temperature,:pressure,:humidity,:mac)
     end
 
 end
