@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107153757) do
+ActiveRecord::Schema.define(version: 20141124171127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "devices", force: true do |t|
+    t.string   "mac"
+    t.string   "owner"
+    t.float    "lat"
+    t.float    "lon"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "measurements", force: true do |t|
     t.float    "temperature"
@@ -23,6 +32,8 @@ ActiveRecord::Schema.define(version: 20141107153757) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "mac"
+    t.string   "riak_key"
+    t.integer  "device_id"
   end
 
 end

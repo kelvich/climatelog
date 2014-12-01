@@ -19,3 +19,41 @@ class Measurement < ActiveRecord::Base
   end
 
 end
+
+
+
+
+# curl -v -d '{"inputs":"weather_proxy_1_802857fd9b", "query":[{"link":{"bucket":"weather_proxy_1_802857fd9b"}},{"map":{"language":"javascript","name":"1"}}]}' -H "Content-Type: application/json" http://blackbird.datamol.net:8098/
+
+
+# curl -XPOST http://blackbird.datamol.net:8098/mapred \
+#   -H 'Content-Type: application/json'   \
+#   -d '{"inputs":"weather_proxy_1_802857fd9b","query":[{"map":{"language":"javascript","source":"function(v) {
+#       var data = JSON.parse(v.values[0].data);
+#       return [[data, 1]];
+# }"}}]}'
+
+
+# curl http://blackbird.datamol.net:8098/search/query/weather_proxy_1_802857fd9b?wt=json&q=name_s:*
+
+# curl -XPOST http://blackbird.datamol.net:8098/mapred
+
+
+# curl 'http://blackbird.datamol.net:8098/types/counters/buckets/weather_proxy_1_802857fd3/keys/time_1412711031' -H "Accept: multipart/mixed"
+
+
+
+
+
+# curl -XPOST http://blackbird.datamol.net:8098/mapred \
+#   -H 'Content-Type: application/json'   \
+#   -d '{"inputs":"weather_proxy_1_802857fd3","query":[{"map":{"language":"javascript","name":"Riak.mapValues"}}]}'
+
+
+
+
+
+
+
+
+

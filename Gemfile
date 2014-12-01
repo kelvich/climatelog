@@ -31,6 +31,8 @@ gem 'chart-js-rails'
 gem 'capistrano',  '~> 3.1'
 gem 'capistrano-rails',  '~> 1.1'
 
+gem 'faraday'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
