@@ -4,7 +4,7 @@ class SensorController < ApplicationController
   def receive
     m = Measurement.create(measurement_params)
     m.measured_at = m.created_at
-    m.device_id = Device.where(mac:m.mac).find_or_create.id
+    m.device_id = Device.where(mac:m.mac).first_or_create.id
     m.save
     render :json => m
   end
