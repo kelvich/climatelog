@@ -2,7 +2,10 @@ class SensorController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:receive]
 
   def receive
-    render :json => Measurement.create(measurement_params)
+    m = Measurement.create(measurement_params)
+    m.measured_at = m.created_at
+    m.save
+    render :json => m
   end
 
   private
