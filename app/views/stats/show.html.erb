@@ -1,0 +1,119 @@
+<script type="text/javascript">
+
+$(function () {
+  // Create the chart
+  $('#temp').highcharts('StockChart', {
+    rangeSelector : { selected : 1 },
+    title : { text : 'Temperature' },
+    series : [{
+      name : 'Temperature',
+      data : <%= @temp.to_json.html_safe %>,
+      type : 'areaspline',
+      threshold : null,
+      tooltip : {
+        valueDecimals : 2
+      },
+      fillColor : {
+        linearGradient : {
+          x1: 0,
+          y1: 0,
+          x2: 0,
+          y2: 1
+        },
+        stops : [
+          [0, Highcharts.getOptions().colors[0]],
+          [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+        ]
+      }
+    }]
+  });
+
+
+  // Create the chart
+  $('#humidity').highcharts('StockChart', {
+    rangeSelector : { selected : 1 },
+    title : { text : 'Humidity' },
+    series : [{
+      name : 'Humidity',
+      data : <%= @humidity.to_json.html_safe %>,
+      type : 'areaspline',
+      threshold : null,
+      tooltip : {
+        valueDecimals : 2
+      },
+      fillColor : {
+        linearGradient : {
+          x1: 0,
+          y1: 0,
+          x2: 0,
+          y2: 1
+        },
+        stops : [
+          [0, Highcharts.getOptions().colors[0]],
+          [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+        ]
+      }
+    }]
+  });
+
+
+  // Create the chart
+  $('#pressure').highcharts('StockChart', {
+    rangeSelector : { selected : 1 },
+    title : { text : 'Pressure' },
+    series : [{
+      name : 'Pressure',
+      data : <%= @pressure.to_json.html_safe %>,
+      type : 'areaspline',
+      threshold : null,
+      tooltip : {
+        valueDecimals : 2
+      },
+      fillColor : {
+        linearGradient : {
+          x1: 0,
+          y1: 0,
+          x2: 0,
+          y2: 1
+        },
+        stops : [
+          [0, Highcharts.getOptions().colors[0]],
+          [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+        ]
+      }
+    }]
+  });
+
+});
+</script>
+
+
+<div class="row">
+  <div class="col-sm-1">
+  </div>
+
+  <div class="col-sm-10 rcol">
+
+    <div class="row">
+      <h3 class="page-header">Temperature</h3>
+      <div id="temp" width="800" height="300"></div>
+    </div>
+
+    <div class="row">
+      <h3 class="page-header">Humidity</h3>
+      <div id="humidity" width="800" height="300"></div>
+    </div>
+
+    <div class="row">
+      <h3 class="page-header">Pressure</h3>
+      <div id="pressure" width="800" height="300"></div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
