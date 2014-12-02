@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# source 'http://production.cf.rubygems.org'
+# source 'https://mirror1.prod.rhcloud.com/mirror/ruby/'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -32,6 +34,7 @@ gem 'capistrano',  '~> 3.1'
 gem 'capistrano-rails',  '~> 1.1'
 
 gem 'faraday'
+gem 'highstock-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

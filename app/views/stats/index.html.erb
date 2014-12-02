@@ -55,14 +55,65 @@ $(function(){
 
 })
 
+
+$(function () {
+
+        // Create the chart
+        $('#temp2').highcharts('StockChart', {
+
+
+            rangeSelector : {
+                selected : 1
+            },
+
+            title : {
+                text : 'AAPL Stock Price'
+            },
+
+            series : [{
+                name : 'AAPL Stock Price',
+                data : <%= Device.find(1).measurements.by_hours("temperature").to_json.html_safe %>,
+                type : 'areaspline',
+                threshold : null,
+                tooltip : {
+                    valueDecimals : 2
+                },
+                fillColor : {
+                    linearGradient : {
+                        x1: 0,
+                        y1: 0,
+                        x2: 0,
+                        y2: 1
+                    },
+                    stops : [
+                        [0, Highcharts.getOptions().colors[0]],
+                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                    ]
+                }
+            }]
+        });
+});
+
 </script>
 
+
+
+<% @devices.each do |d| %>
+ <%= d.id %>, <%= d.mac %>, last measurement in <%= d.measurements.order(:measured_at).last.measured_at if d.measurements.order(:measured_at).last%> <br>
+<% end %>
+
+
+<div id="temp2" width="800" height="300"></div>
 
 <div class="row">
   <div class="col-sm-1">
   </div>
 
   <div class="col-sm-10 rcol">
+    <div class="row">
+      <h3 class="page-header">Temperature</h3>
+<!--       <canvas id="temp2" width="800" height="300"></canvas>
+ -->    </div>
 
     <div class="row">
       <h3 class="page-header">Temperature</h3>

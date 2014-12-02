@@ -44,8 +44,10 @@ class Device < ActiveRecord::Base
 
   def sync_data
     keys = load_keys
+    old_keys = measurements.pluck(:riak_key)
 
-    keys.each do |key|
+
+    (keys-old_keys).sort.each do |key|
       m = measurements.where(riak_key: key).first_or_create
       if !m.temperature
         key_data = load_keydata(key)
@@ -53,7 +55,7 @@ class Device < ActiveRecord::Base
           m.temperature = key_data['temperature']
           m.pressure = key_data['pressure']
           m.humidity = key_data['humidity']
-          m.created_at = Time.at(key.split('_').last.to_i)
+          m.measured_at = Time.at(key.split('_').last.to_i)
           m.save
         end
       end

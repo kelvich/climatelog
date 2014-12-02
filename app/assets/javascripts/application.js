@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require Chart
+//= require highstock
 //= require_tree .

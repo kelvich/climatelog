@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124171127) do
+ActiveRecord::Schema.define(version: 20141201233111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20141124171127) do
     t.string   "mac"
     t.string   "riak_key"
     t.integer  "device_id"
+    t.datetime "measured_at"
   end
 
 end

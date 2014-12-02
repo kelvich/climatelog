@@ -8,6 +8,8 @@ class StatsController < ApplicationController
     # convert to millimeters of mercury
     pressure = Measurement.last_day(:pressure)
     @pressure = Hash[pressure.map{ |h,p| [h, p/133.3] }]
+
+    @devices = Device.all
   end
 
 end

@@ -18,6 +18,15 @@ class Measurement < ActiveRecord::Base
     Hash[hours.zip(values)]
   end
 
+  def self.by_hours(quantity)
+    temps = Measurement.
+      group("date_trunc('hour',measured_at)").
+      order("date_trunc('hour',measured_at)"). 
+      pluck("extract(epoch from date_trunc('hour',measured_at))*1000, avg(#{quantity})").
+      map{ |t| [t.first.to_i,t.last.round(2)] if t.last!=nil}.
+      compact
+  end
+
 end
 
 
