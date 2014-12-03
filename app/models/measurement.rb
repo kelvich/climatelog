@@ -37,5 +37,3 @@ class Measurement < ActiveRecord::Base
 
 end
 
-
-1417539600000
