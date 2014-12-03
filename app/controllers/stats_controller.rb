@@ -1,7 +1,7 @@
 class StatsController < ApplicationController
 
   def index
-    @devices = Device.all
+    @devices = Device.order(:mac).all
   end
 
   def show

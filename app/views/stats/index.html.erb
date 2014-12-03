@@ -11,20 +11,21 @@
         <div class="panel-heading">Devices</div>
         <table class="table table-striped">
           <tr>
-            <th>№</th>
             <th>Owner</th>
             <th>MAC address</th>
+            <th>Measurements count</th>
             <th>First measurement</th>
             <th>Last measurement</th>
           </tr>
           <% @devices.each do |d| %>
+          <% next if d.measurements.where("measured_at is not null").empty? %>
+          <% Rails.logger.info "---#{d.id}" %>
           <tr>
-            <td><%= d.id %></td>
             <td><%= d.owner %></td>
             <td><%= link_to d.mac, stat_url(d.id) %></td>
             <td><%= d.measurements.count %></td>
-            <td><%#= d.measurements.order(:measured_at).where("measured_at is not null").first.measured_at %></td>
-            <!-- <td><%#= d.measurements.order(:measured_at).where("measured_at is not null").last.measured_at %></td> -->
+            <td><%= d.measurements.order(:measured_at).where("measured_at is not null").first.measured_at.to_date %></td>
+            <td><%= d.measurements.order(:measured_at).where("measured_at is not null").last.measured_at.to_date %></td>
           </tr>
           <% end %>
         </table>
@@ -33,4 +34,5 @@
   </div>
 </div>
 
+<br><br>
 
