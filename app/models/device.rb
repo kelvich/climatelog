@@ -8,10 +8,8 @@ class String
   end
 end
 
-
 class Device < ActiveRecord::Base
   has_many :measurements
-
 
   def self.load
     buckets_url = 'http://blackbird.datamol.net:8098/types/counters/buckets?buckets=true'
